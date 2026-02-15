@@ -26,7 +26,7 @@ type CreateUserParams struct {
 	UpdatedAt string
 	Name      string
 	// #nosec G117 -- ApiKey field is not a secret, just an identifier
-	ApiKey    string
+	ApiKey string
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) error {

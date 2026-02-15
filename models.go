@@ -12,7 +12,7 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	Name      string    `json:"name"`
 	// #nosec G117 -- ApiKey field is not a secret, just an identifier
-	ApiKey    string    `json:"api_key"`
+	ApiKey string `json:"api_key"`
 }
 
 func databaseUserToUser(user database.User) (User, error) {
