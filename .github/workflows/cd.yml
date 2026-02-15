@@ -32,3 +32,12 @@ jobs:
       - name: Push to GAR
         run: |
           gcloud builds submit --tag us-central1-docker.pkg.dev/${{ secrets.GCP_NOTELY_PROJECT_ID }}/notely-ar-repo/notely:latest .
+    
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy notely \
+            --image us-central1-docker.pkg.dev/${{ secrets.GCP_NOTELY_PROJECT_ID }}/notely-ar-repo/notely:latest \
+            --region us-central1 \
+            --project ${{ secrets.GCP_NOTELY_PROJECT_ID }} \
+            --max-instances 2 \
+            --allow-unauthenticated 
