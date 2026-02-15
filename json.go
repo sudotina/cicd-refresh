@@ -30,5 +30,8 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 		return
 	}
 	w.WriteHeader(code)
-	w.Write(dat)
+	// #nosec G705 -- data is JSON-encoded from json.Marshal, which properly escapes content
+	if _, err := w.Write(dat); err != nil {
+		log.Printf("Error writing JSON response: %v", err)
+	}
 }
