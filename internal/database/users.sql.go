@@ -25,6 +25,7 @@ type CreateUserParams struct {
 	CreatedAt string
 	UpdatedAt string
 	Name      string
+	// #nosec G117 -- ApiKey field is not a secret, just an identifier
 	ApiKey    string
 }
 
